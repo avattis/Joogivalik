@@ -12,7 +12,50 @@ function baasi_yhendus(){
 
 }
 
-/*function fake_login(){
+function register(){
+    global $link;
+    $errors=array();
+    if (!empty($_POST)){
+        if (empty($_POST["username"])) {
+            $errors[]="nimi kohustuslik";
+        }
+        if (empty($_POST["email"])) {
+            $errors[]="email kohustuslik";
+        }
+        if (empty($_POST["password"])) {
+            $errors[]="TParool kohustuslik";
+        }
+        if (empty($_POST["password2"])) {
+            $errors[]="Parool2 kohutstulik";
+        }
+
+
+        if (empty($errors)){
+
+            // siin sisestada andmed
+            $username=mysqli_real_escape_string($link, $_POST["username"]);
+            $email=mysqli_real_escape_string($link, $_POST["email"]);
+            $password=mysqli_real_escape_string($link, $_POST["password"]);
+            $password2=mysqli_real_escape_string($link, $_POST["password2"]);
+
+
+            if ($password == $password2){
+                $password = md5($password);
+                $sql = "INSERT INTO A4_user (username, email, password) VALUES
+ ('$username','$email', '$password')";
+            $result = mysqli_query($link, $sql);
+
+            if ($result){
+                header("Location: ?mode=joogid");
+            }
+            }
+        }
+
+    }
+    include_once("vaated/register.php");
+}
+
+function fake_login(){
     if (!empty($_GET["roll"])) {
         if ($_GET["roll"]=="admin"){
             $_SESSION["user"]="Boss";
@@ -32,7 +75,7 @@ function logout(){
     $_SESSION=array();
     session_destroy();
     header("Location: ?");
-}*/
+}
 
 function kuva_joogid(){
     global $link;

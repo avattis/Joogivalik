@@ -18,6 +18,9 @@ switch($mode){
     case "lisa":
         lisa();
         break;
+    case "register":
+        register();
+        break;
     /*case  "login":
         fake_login();
         break;

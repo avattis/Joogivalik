@@ -21,9 +21,7 @@
         <li><a href="?">pealeht</a></li>
         <li><a href="?mode=joogid">Joogid</a></li>
         <li><a href="?mode=lisa">Lisa jook</a></li>
-        <?php if (!empty($_SESSION['roll']) && $_SESSION['roll']=="admin"):?>
-
-        <?php endif; ?>
-        <li>Login</a></li>
+        <li><a href="?mode=register">Registreeri</a></li>
+        <li><a href="?mode=login">Login</a></li>
         <li>Logout</a></li>
     </ul>
