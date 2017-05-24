@@ -1,8 +1,7 @@
 var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
     "#2E2C75", "#673A7E", "#CC0071", "#F80120",
     "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
-var drink = ["1", "2", "3", "4",
-    "5", "6", "7", "8", "9", "10", "11", "12"];
+
 
 var startAngle = 0;
 var arc = Math.PI / 6;
@@ -49,8 +48,8 @@ function drawRouletteWheel() {
             ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius,
                 250 + Math.sin(angle + arc / 2) * textRadius);
             ctx.rotate(angle + arc / 2 + Math.PI / 2);
-            var text = drink[i];
-            ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+            //var text = drink[i];
+           // ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
             ctx.restore();
         }
 
@@ -94,13 +93,14 @@ function stopRotateWheel() {
     var degrees = startAngle * 180 / Math.PI + 90;
     var arcd = arc * 180 / Math.PI;
     var index = Math.floor((360 - degrees % 360) / arcd);
+    window.location.assign("http://enos.itcollege.ee/~avattis/joogirulett.php?mode=rulett")
     ctx.save();
     ctx.font = 'bold 30px Helvetica, Arial';
     var text = "";
     ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
 
-    window.location.assign("http://enos.itcollege.ee/~avattis/joogirulett.php?mode=rulett")
+
 }
 
 function easeOut(t, b, c, d) {

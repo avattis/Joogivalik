@@ -1,6 +1,6 @@
 
 
-<input type="button" value= "Üllata end" onclick="return spin();" style="float:left;">
+<input type="button" class="button" value= "Üllata end" onclick="return spin();" style="float:left;">
 <canvas id="canvas" width="500" height="500"></canvas>
 <script type="text/javascript"  src="rulett.js"></script>
 <a href="?mode=rulett" ></a>
