@@ -1,5 +1,6 @@
 <?php
 
+
 function baasi_yhendus(){
     global $link;
     $user = "test";
@@ -7,8 +8,8 @@ function baasi_yhendus(){
     $db = "test";
     $host = "localhost";
 
-    $link = mysqli_connect($host, $user, $pass, $db) or die("ei saanud ¸hendatud - ");
-    mysqli_query($link, "SET CHARACTER SET UTF8")or die($sql. " - ". mysqli_error($link));
+    $link = mysqli_connect($host, $user, $pass, $db);
+    mysqli_query($link, "SET CHARACTER SET UTF8");
 
 }
 
@@ -23,7 +24,7 @@ function register(){
             $errors[]="email kohustuslik";
         }
         if (empty($_POST["password"])) {
-            $errors[]="TParool kohustuslik";
+            $errors[]="Parool kohustuslik";
         }
         if (empty($_POST["password2"])) {
             $errors[]="Parool2 kohutstulik";
@@ -42,7 +43,7 @@ function register(){
             if ($password == $password2){
                 $password = md5($password);
                 $sql = "INSERT INTO A4_user (username, email, password) VALUES
- ('$username','$email', '$password')";
+ ('$username','$email','$password')";
             $result = mysqli_query($link, $sql);
 
             if ($result){
@@ -55,20 +56,32 @@ function register(){
     include_once("vaated/register.php");
 }
 
-function fake_login(){
-    if (!empty($_GET["roll"])) {
-        if ($_GET["roll"]=="admin"){
-            $_SESSION["user"]="Boss";
-            $_SESSION["roll"]="admin";
-            $_SESSION["user_id"]=1;
+function login(){
+    global $link;
+    if (isset($_POST['login_btn'])) {
+        $username = mysqli_real_escape_string($link, $_POST["username"]);
+        $password = mysqli_real_escape_string($link, $_POST["password"]);
+        $password = md5($password);
+        $sql = "SELECT * FROM A4_user Where username = '$username' AND password = '$password'";
+        $result = mysqli_query($link, $sql);
+
+        if (mysqli_num_rows($result) == 1) {
+            echo "???";
+            $_SESSION["message"] = "Oled sisse logitud";
+            $_SESSION["username"] = $username;
+            header("location: ?mode=lisa");
         } else {
-            $_SESSION["user"]="Treener1";
-            $_SESSION["roll"]="kasutaja";
-            $_SESSION["user_id"]=2;
+            $_SESSION["message"] = "Kasutajatunnus või parool ei ole õige";
+            echo "$password";
         }
-        header("Location: ?mode=loomad");
     }
-    include_once("vaated/login.html");
+
+    include_once("vaated/login.php");
+}
+function rulett(){
+
+
+    include_once ("rulett.html");
 }
 
 function logout(){

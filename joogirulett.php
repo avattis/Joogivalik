@@ -9,6 +9,7 @@ if (!empty($_GET["mode"])){
 }
 include_once("head.php");
 switch($mode){
+
     case "joogid":
         kuva_joogid();
         break;
@@ -21,16 +22,16 @@ switch($mode){
     case "register":
         register();
         break;
-    /*case  "login":
-        fake_login();
+    case  "login":
+        login();
         break;
     case "logout":
         logout();
         break;
 
     default:
-        include_once("vaated/joogid.php");
-        break;*/
+        include_once("rulett.html");
+        break;
 }
 include_once("foot.html");
 ?>

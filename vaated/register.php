@@ -10,11 +10,11 @@
         </tr>
         <tr>
             <td>Parool:</td>
-            <td><input type="password" name="password" class="textInput"></td>
+            <td><input type="password" name="password" class="textInput" value="<?php if (!empty($_POST['password'])) echo htmlspecialchars($_POST['password']);?>"</td>
         </tr>
         <tr>
             <td>Parool uuesti:</td>
-            <td><input type="password" name="password2" class="textInput"></td>
+            <td><input type="password" name="password2" class="textInput" value="<?php if (!empty($_POST['password2'])) echo htmlspecialchars($_POST['password2']);?>"</td>
         </tr>
         <tr>
             <td></td>

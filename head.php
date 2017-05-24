@@ -15,6 +15,7 @@
         /*#content{padding:10px;}*/
     </style>
 </head>
+
 <body>
 <div id="wrap">
     <ul id="menu">
@@ -23,5 +24,11 @@
         <li><a href="?mode=lisa">Lisa jook</a></li>
         <li><a href="?mode=register">Registreeri</a></li>
         <li><a href="?mode=login">Login</a></li>
-        <li>Logout</a></li>
+        <li><a href="?mode=logout"> Logout</a></li>
     </ul>
+
+
+
+
+
+
