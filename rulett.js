@@ -1,4 +1,3 @@
-
 var colors = ["#B8D430", "#3AB745", "#029990", "#3501CB",
     "#2E2C75", "#673A7E", "#CC0071", "#F80120",
     "#F35B20", "#FB9A00", "#FFCC00", "#FEF200"];
@@ -70,18 +69,19 @@ function drawRouletteWheel() {
     }
 }
 
-function spin() {
+    function spin() {
     spinAngleStart = Math.random() * 10 + 10;
     spinTime = 0;
     spinTimeTotal = Math.random() * 3 + 4 * 1000;
     rotateWheel();
 }
 
-function rotateWheel() {
+    function rotateWheel() {
     spinTime += 30;
     if(spinTime >= spinTimeTotal) {
         stopRotateWheel();
-        return;
+
+        return ;
     }
     var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
     startAngle += (spinAngle * Math.PI / 180);
@@ -96,9 +96,11 @@ function stopRotateWheel() {
     var index = Math.floor((360 - degrees % 360) / arcd);
     ctx.save();
     ctx.font = 'bold 30px Helvetica, Arial';
-    var text = drink[index]
+    var text = "";
     ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
+
+    window.location.assign("http://enos.itcollege.ee/~avattis/joogirulett.php?mode=rulett")
 }
 
 function easeOut(t, b, c, d) {
@@ -108,4 +110,5 @@ function easeOut(t, b, c, d) {
 }
 
 drawRouletteWheel();
+
 

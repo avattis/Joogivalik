@@ -28,11 +28,18 @@ switch($mode){
     case "logout":
         logout();
         break;
-
+    case "rulett":
+        rulett();
+        break;
     default:
-        include_once("rulett.html");
+        include_once("rulett.php");
         break;
 }
 include_once("foot.html");
 ?>
 
+<?php if(!empty($rand)):?>
+
+    <h3><?php echo $rand['name'];?></h3>
+
+<?php endif; ?>

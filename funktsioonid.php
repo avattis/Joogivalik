@@ -78,10 +78,15 @@ function login(){
 
     include_once("vaated/login.php");
 }
-function rulett(){
+function rulett()
+{
+    global $link;
+    $sql = "SELECT id, name FROM A4_drinks ORDER BY RAND()LIMIT 1";
+    $result = mysqli_query($link, $sql) or die("Sellist jooki ei ole");
+    $rand = mysqli_fetch_assoc($result);
 
 
-    include_once ("rulett.html");
+    include_once("rulett.php");
 }
 
 function logout(){
@@ -98,26 +103,27 @@ function kuva_joogid(){
 
     while($rida = mysqli_fetch_assoc($result)){
         $joogid[]=$rida;
-
     }
+
+
+
     include_once("vaated/joogid.php");
 }
 
-function kuva_jook(){
+function kuva_jook()
+{
     global $link;
     //if (empty($_SESSION["roll"])){header("Location: ?mode=joogid");}
-    if(!empty($_GET["id"])){
+    if (!empty($_GET["id"])) {
 
-        $sql="SELECT * FROM A4_drinks WHERE id=".mysqli_real_escape_string($link, $_GET["id"]);
+        $sql = "SELECT * FROM A4_drinks WHERE id=" . mysqli_real_escape_string($link, $_GET["id"]);
         $result = mysqli_query($link, $sql) or die("Sellist jooki ei ole");
-        $jook= mysqli_fetch_assoc($result);
+        $jook = mysqli_fetch_assoc($result);
         if ($jook) {
-            include_once ("vaated/jook.php");
-        }
-        else header("Location: ?mode=joogid");
+            include_once("vaated/jook.php");
+        } else header("Location: ?mode=joogid");
     }
     //else {header("Location: ?mode=joogid");}
-
 }
 
 

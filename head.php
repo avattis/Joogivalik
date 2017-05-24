@@ -19,7 +19,7 @@
 <body>
 <div id="wrap">
     <ul id="menu">
-        <li><a href="?">pealeht</a></li>
+        <li><a href="?mode=rulett">pealeht</a></li>
         <li><a href="?mode=joogid">Joogid</a></li>
         <li><a href="?mode=lisa">Lisa jook</a></li>
         <li><a href="?mode=register">Registreeri</a></li>
