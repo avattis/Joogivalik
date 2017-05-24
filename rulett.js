@@ -7,7 +7,7 @@ var startAngle = 0;
 var arc = Math.PI / 6;
 var spinTimeout = null;
 
-var spinArcStart = 10;
+var spinAngleStart = Math.random() * 10 + 10;
 var spinTime = 0;
 var spinTimeTotal = 0;
 
@@ -60,7 +60,7 @@ function drawRouletteWheel() {
         ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
         ctx.lineTo(250 + 4, 250 - (outsideRadius - 5));
         ctx.lineTo(250 + 9, 250 - (outsideRadius - 5));
-        ctx.lineTo(250 + 0, 250 - (outsideRadius - 13));
+        ctx.lineTo(250, 250 - (outsideRadius - 13));
         ctx.lineTo(250 - 9, 250 - (outsideRadius - 5));
         ctx.lineTo(250 - 4, 250 - (outsideRadius - 5));
         ctx.lineTo(250 - 4, 250 - (outsideRadius + 5));
@@ -69,7 +69,7 @@ function drawRouletteWheel() {
 }
 
     function spin() {
-    spinAngleStart = Math.random() * 10 + 10;
+        spinAngleStart = Math.random() * 10 + 10;
     spinTime = 0;
     spinTimeTotal = Math.random() * 3 + 4 * 1000;
     rotateWheel();
@@ -90,10 +90,10 @@ function drawRouletteWheel() {
 
 function stopRotateWheel() {
     clearTimeout(spinTimeout);
-    var degrees = startAngle * 180 / Math.PI + 90;
-    var arcd = arc * 180 / Math.PI;
-    var index = Math.floor((360 - degrees % 360) / arcd);
-    window.location.assign("http://enos.itcollege.ee/~avattis/joogirulett.php?mode=rulett")
+    //var degrees = startAngle * 180 / Math.PI + 90;
+    //var arcd = arc * 180 / Math.PI;
+    //var index = Math.floor((360 - degrees % 360) / arcd);
+    window.location.assign("http://enos.itcollege.ee/~avattis/joogirulett.php?mode=rulett");
     ctx.save();
     ctx.font = 'bold 30px Helvetica, Arial';
     var text = "";

@@ -38,8 +38,3 @@ switch($mode){
 include_once("foot.html");
 ?>
 
-<?php if(!empty($rand)):?>
-
-    <h3><?php echo $rand['name'];?></h3>
-
-<?php endif; ?>
