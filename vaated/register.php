@@ -2,19 +2,27 @@
     <table>
         <tr>
             <td>Kasutjanimi:</td>
-            <td><input type="text" name="username" value="<?php if (!empty($_POST['username'])) echo htmlspecialchars($_POST['username']);?>"</td>
+            <td><input type="text" name="username"
+                       value="<?php if (!empty( $_POST[ 'username' ] )) echo htmlspecialchars ( $_POST[ 'username' ] );?>"
+            </td>
         </tr>
         <tr>
             <td>Email:</td>
-            <td><input type="email" name="email" value="<?php if (!empty($_POST['email'])) echo htmlspecialchars($_POST['email']);?>"</td>
+            <td><input type="email" name="email"
+                       value="<?php if (!empty( $_POST[ 'email' ] )) echo htmlspecialchars ( $_POST[ 'email' ] );?>"
+            </td>
         </tr>
         <tr>
             <td>Parool:</td>
-            <td><input type="password" name="password" class="textInput" value="<?php if (!empty($_POST['password'])) echo htmlspecialchars($_POST['password']);?>"</td>
+            <td><input type="password" name="password" class="textInput"
+                       value="<?php if (!empty( $_POST[ 'password' ] )) echo htmlspecialchars ( $_POST[ 'password' ] );?>"
+            </td>
         </tr>
         <tr>
             <td>Parool uuesti:</td>
-            <td><input type="password" name="password2" class="textInput" value="<?php if (!empty($_POST['password2'])) echo htmlspecialchars($_POST['password2']);?>"</td>
+            <td><input type="password" name="password2" class="textInput"
+                       value="<?php if (!empty( $_POST[ 'password2' ] )) echo htmlspecialchars ( $_POST[ 'password2' ] );?>"
+            </td>
         </tr>
         <tr>
             <td></td>
@@ -22,9 +30,9 @@
         </tr>
     </table>
 </form>
-<?php if (!empty($errors)):
-    foreach($errors as $e):
-        echo "$e <br/>";
-    endforeach;
-endif;
-?>
+    <?php if (!empty( $errors )):
+        foreach ( $errors as $e ):
+            echo "$e <br/>";
+        endforeach;
+    endif;
+    ?>
