@@ -96,7 +96,7 @@ function stopRotateWheel() {
     window.location.assign("http://enos.itcollege.ee/~avattis/joogirulett.php?mode=rulett");
     ctx.save();
     ctx.font = 'bold 30px Helvetica, Arial';
-    var text = "";
+    var text = $rand['name'];
     ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
 
