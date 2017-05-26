@@ -12,9 +12,18 @@
         <li><a href="?">Pealeht</a></li>
         <li><a href="?mode=joogid">Joogid</a></li>
         <li><a href="?mode=lisa">Lisa jook</a></li>
-        <li><a href="?mode=register">Registreeri</a></li>
-        <li><a href="?mode=login">Login</a></li>
-        <li><a href="?mode=logout"> Logout</a></li>
+        <li>
+            <?php if ( !isset( $_SESSION[ 'username' ] ) ){
+            echo "<li><a href=\"?mode=login\">Logi sisse</a></li>" ;
+            echo "<li><a href=\"?mode=register\">Registreeri</a></li>";}
+            else{
+                echo "<li><p>&nbsp;&nbsp;&nbsp;Oled sisse logitud&nbsp;&nbsp;&nbsp;</p></li>";
+                echo "<li><a href=\"?mode=logout\">Logi välja</a></li>";
+            }?>
+
+        </li>
+
+
     </ul>
 
 
