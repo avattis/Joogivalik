@@ -22,7 +22,10 @@ function register ()
         $result = mysqli_query ( $link, $sql );
         if ( mysqli_num_rows ( $result ) == 1 ) {
             echo "Selline kasutaja on olemas";
-            //header("location: ?mode=register");
+            $message = "Selline kasutaja on juba olemas!";
+            $suuna = "http://enos.itcollege.ee/~avattis/joogirulett.php?mode=register";
+            echo "<script type='text/javascript'>alert('$message');
+                window.location.replace('$suuna');</script>";
         }
         else {
             if ( !empty( $_POST ) ) {
@@ -136,10 +139,10 @@ function lisa ()
             $sql = "SELECT * FROM A4_drinks WHERE name = '$name' ";
             $result = mysqli_query ( $link, $sql );
             if ( mysqli_num_rows ( $result ) == 1 ) {
-                // header("location: ?mode=lisa");
                 $message = "Selline kokteil on juba olemas!";
-                echo "<script type='text/javascript'>alert('$message');</script>";
-
+                $suuna = "http://enos.itcollege.ee/~avattis/joogirulett.php?mode=lisa";
+                echo "<script type='text/javascript'>alert('$message');
+                window.location.replace('$suuna');</script>";
             }
             else {
 
