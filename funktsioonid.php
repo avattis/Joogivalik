@@ -51,7 +51,8 @@ function register ()
                         $sql = "INSERT INTO A4_user (username, email, password) VALUES ('$username','$email','$password')";
                         $result = mysqli_query ( $link, $sql );
                         if ( $result ) {
-                            header ( "Location: ?mode=joogid" );
+                            echo "Registreerimine õnnestus. <a href=http://enos.itcollege.ee/~avattis/joogirulett.php?mode=login> Logi sisse<br/></a>";
+                           // header ( "Location: ?mode=login" );
                         }
                     }
                 }
