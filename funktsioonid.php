@@ -104,8 +104,8 @@ function kuva_joogid ()
 {
     global $link;
     $joogid = array ();
-    $sql = "SELECT id, name FROM A4_drinks";
-    $result = mysqli_query ( $link, $sql ) or die( $sql . "-" . mysqli_error ( $link ) );
+    $sql = "SELECT id, name FROM A4_drinks ORDER BY name ASC";
+    $result = mysqli_query ( $link, $sql );
     while ( $rida = mysqli_fetch_assoc ( $result ) ) {
         $joogid[] = $rida;
     }
