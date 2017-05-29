@@ -11,6 +11,7 @@ function baasi_yhendus ()
     mysqli_query ( $link, "SET CHARACTER SET UTF8" );
 }
 
+
 function register ()
 {
     global $link;
@@ -42,10 +43,10 @@ function register ()
                     $errors[] = "Parool 2 kohutstulik";
                 }
                 if ( empty( $errors ) ) {
-                    $username = mysqli_real_escape_string ( $link, $_POST[ "username" ] );
-                    $email = mysqli_real_escape_string ( $link, $_POST[ "email" ] );
-                    $password = mysqli_real_escape_string ( $link, $_POST[ "password" ] );
-                    $password2 = mysqli_real_escape_string ( $link, $_POST[ "password2" ] );
+                    $username = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "username" ]) );
+                    $email = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "email" ] ));
+                    $password = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "password" ] ));
+                    $password2 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "password2" ] ));
                     if ( $password == $password2 ) {
                         $password = md5 ( $password );
                         $sql = "INSERT INTO A4_user (username, email, password) VALUES ('$username','$email','$password')";
@@ -67,8 +68,8 @@ function login ()
 {
     global $link;
     if ( isset( $_POST[ 'login_btn' ] ) ) {
-        $username = mysqli_real_escape_string ( $link, $_POST[ "username" ] );
-        $password = mysqli_real_escape_string ( $link, $_POST[ "password" ] );
+        $username = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "username" ] ));
+        $password = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "password" ] ));
         $password = md5 ( $password );
         $sql = "SELECT * FROM A4_user Where username = '$username' AND password = '$password'";
         $result = mysqli_query ( $link, $sql );
@@ -129,7 +130,12 @@ function kuva_jook ()
         else header ( "Location: ?mode=joogid" );
     }
 }
-
+function escapeHtml($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 function lisa ()
 {
     global $link;
@@ -147,30 +153,29 @@ function lisa ()
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.replace('$suuna');</script>";
             }
-            else {
-
                 $errors = array ();
-                if ( !empty( $_POST ) ) {
-                    if ( empty( $_POST[ "name" ] ) ) {
+            if ( !empty( $_POST ) ) {
+                if ( empty( $_POST[ "name" ] )  ) {
                         $errors[] = "Kokteili nimi kohustuslik";
                     }
                     if ( empty( $_POST[ "ingredient1" ] ) ) {
                         $errors[] = "Esimene koostisosa kohustuslik";
                     }
-                    if ( empty( $_POST[ "ingredient2" ] ) ) {
+                    if ( empty( $_POST[ "ingredient2" ] )  ) {
                         $errors[] = "Teine koostisosa kohustuslik";
                     }
                     if ( empty( $_POST[ "recipe" ] ) ) {
                         $errors[] = "Valmistamine kohustuslik";
                     }
                     if ( empty( $errors ) ) {
-                        $name = mysqli_real_escape_string ( $link, $_POST[ "name" ] );
-                        $ingredient1 = mysqli_real_escape_string ( $link, $_POST[ "ingredient1" ] );
-                        $ingredient2 = mysqli_real_escape_string ( $link, $_POST[ "ingredient2" ] );
-                        $ingredient3 = mysqli_real_escape_string ( $link, $_POST[ "ingredient3" ] );
-                        $ingredient4 = mysqli_real_escape_string ( $link, $_POST[ "ingredient4" ] );
-                        $ingredient5 = mysqli_real_escape_string ( $link, $_POST[ "ingredient5" ] );
-                        $recipe = mysqli_real_escape_string ( $link, $_POST[ "recipe" ] );
+                        $name = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "name" ] ));
+                        $ingredient1 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient1" ] ));
+                        $ingredient2 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient2" ] ));
+                        $ingredient3 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient3" ] ));
+                        $ingredient4 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient4" ] ));
+                        $ingredient5 = escapeHtml( mysqli_real_escape_string ( $link, $_POST[ "ingredient5" ] ));
+                        $recipe = escapeHtml( mysqli_real_escape_string ( $link, $_POST[ "recipe" ] ));
+
                         $sql = "INSERT INTO A4_drinks (name, ingredient1, ingredient2, ingredient3, ingredient4,ingredient5, recipe) VALUES
  ('$name','$ingredient1', '$ingredient2','$ingredient3', '$ingredient4', '$ingredient5' , '$recipe')";
                         $result = mysqli_query ( $link, $sql );
@@ -180,7 +185,8 @@ function lisa ()
                     }
                 }
             }
-        }
+
+
         include_once ( "vaated/lisa.php" );
     }
 }
