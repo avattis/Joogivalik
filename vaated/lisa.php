@@ -1,9 +1,8 @@
 <form action="?mode=lisa" method="post">
 
-    <div class="required">
     <label for="name" ><b>Kokteili nimi:</b></label><br/>
     <input type="text" name="name" id="name"
-           value="<?php if ( !empty( $_POST[ 'name' ] ) ) echo htmlspecialchars ( $_POST[ 'name' ] ); ?>"/> <br/></div>
+           value="<?php if ( !empty( $_POST[ 'name' ] ) ) echo htmlspecialchars ( $_POST[ 'name' ] ); ?>"/> <br/>
     <label for="sisestus"><b>Koostisosad:</b></label><br/>
     <input type="text" name="ingredient1" class="sisestus" id="sisestus"
            value="<?php if ( !empty( $_POST[ 'ingredient1' ] ) ) echo htmlspecialchars ( $_POST[ 'ingredient1' ] ); ?>"/>

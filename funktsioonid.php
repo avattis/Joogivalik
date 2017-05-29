@@ -84,6 +84,13 @@ function login ()
     include_once ( "vaated/login.php" );
 }
 
+function logout ()
+{
+    $_SESSION = array ();
+    session_destroy ();
+    header ( "Location: ?" );
+}
+
 function rulett ()
 {
     global $link;
@@ -93,12 +100,7 @@ function rulett ()
     include_once ( "rulett.php" );
 }
 
-function logout ()
-{
-    $_SESSION = array ();
-    session_destroy ();
-    header ( "Location: ?" );
-}
+
 
 function kuva_joogid ()
 {
