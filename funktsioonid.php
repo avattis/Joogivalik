@@ -52,7 +52,6 @@ function register ()
                         $result = mysqli_query ( $link, $sql );
                         if ( $result ) {
                             echo "Registreerimine õnnestus. <a href=http://enos.itcollege.ee/~avattis/joogirulett.php?mode=login> Logi sisse<br/></a>";
-                           // header ( "Location: ?mode=login" );
                         }
                     }
                 }
@@ -89,7 +88,7 @@ function rulett ()
 {
     global $link;
     $sql = "SELECT id, name FROM A4_drinks ORDER BY RAND()LIMIT 1";
-    $result = mysqli_query ( $link, $sql ) or die( "Sellist jooki ei ole" );
+    $result = mysqli_query ( $link, $sql );
     $rand = mysqli_fetch_assoc ( $result );
     include_once ( "rulett.php" );
 }
@@ -116,7 +115,6 @@ function kuva_joogid ()
 function kuva_jook ()
 {
     global $link;
-    //if (empty($_SESSION["roll"])){header("Location: ?mode=joogid");}
     if ( !empty( $_GET[ "id" ] ) ) {
         $sql = "SELECT * FROM A4_drinks WHERE id=" . mysqli_real_escape_string ( $link, $_GET[ "id" ] );
         $result = mysqli_query ( $link, $sql ) or die( "Sellist jooki ei ole" );
