@@ -20,14 +20,9 @@
                 echo "<li><p>&nbsp;&nbsp;&nbsp;Oled sisse logitud&nbsp;&nbsp;&nbsp;</p></li>";
                 echo "<li><a href=\"?mode=logout\">Logi välja</a></li>";
             }?>
-
         </li>
-
-
     </ul>
-
-
-
-
+</body>
+</html>
 
 

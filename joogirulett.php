@@ -35,6 +35,5 @@ switch ( $mode ) {
         include_once ( "rulett.php" );
         break;
 }
-include_once ( "foot.html" );
-?>
+
 

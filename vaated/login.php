@@ -13,7 +13,6 @@
             </td>
         </tr>
         <tr>
-
             <td><input type="submit" name="login_btn" value="Logi sisse"></td>
         </tr>
     </table>
