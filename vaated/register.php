@@ -1,3 +1,10 @@
+<?php if (!empty( $errors )):
+    foreach ( $errors as $e ):
+        echo "$e <br/>";
+    endforeach;
+endif;
+?>
+
 <form action="?mode=register" method="post">
     <table>
         <tr>
@@ -30,9 +37,3 @@
         </tr>
     </table>
 </form>
-    <?php if (!empty( $errors )):
-        foreach ( $errors as $e ):
-            echo "$e <br/>";
-        endforeach;
-    endif;
-    ?>

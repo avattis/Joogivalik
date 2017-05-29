@@ -30,16 +30,16 @@ function register ()
         else {
             if ( !empty( $_POST ) ) {
                 if ( empty( $_POST[ "username" ] ) ) {
-                    $errors[] = "nimi kohustuslik";
+                    $errors[] = "Nimi kohustuslik";
                 }
                 if ( empty( $_POST[ "email" ] ) ) {
-                    $errors[] = "email kohustuslik";
+                    $errors[] = "Email kohustuslik";
                 }
                 if ( empty( $_POST[ "password" ] ) ) {
                     $errors[] = "Parool kohustuslik";
                 }
                 if ( empty( $_POST[ "password2" ] ) ) {
-                    $errors[] = "Parool2 kohutstulik";
+                    $errors[] = "Parool 2 kohutstulik";
                 }
                 if ( empty( $errors ) ) {
                     $username = mysqli_real_escape_string ( $link, $_POST[ "username" ] );
@@ -53,6 +53,8 @@ function register ()
                         if ( $result ) {
                             echo "Registreerimine õnnestus. <a href=http://enos.itcollege.ee/~avattis/joogirulett.php?mode=login> Logi sisse<br/></a>";
                         }
+                    } else {
+                        echo "Paroolid on erinevad.";
                     }
                 }
             }

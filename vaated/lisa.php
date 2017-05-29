@@ -1,3 +1,10 @@
+<?php if ( !empty( $errors ) ):
+    foreach ( $errors as $e ):
+        echo "$e <br/>";
+    endforeach;
+endif;
+?>
+
 <form action="?mode=lisa" method="post">
 
     <label for="name" ><b>Kokteili nimi:</b></label><br/>
@@ -25,9 +32,3 @@
     <br/>
     <input type="submit" value="Lisa" name="lisa"/>
 </form>
-<?php if ( !empty( $errors ) ):
-    foreach ( $errors as $e ):
-        echo "$e <br/>";
-    endforeach;
-endif;
-?>
