@@ -1,5 +1,4 @@
 <?php
-
 function baasi_yhendus ()
 {
     global $link;
@@ -10,8 +9,6 @@ function baasi_yhendus ()
     $link = mysqli_connect ( $host, $user, $pass, $db );
     mysqli_query ( $link, "SET CHARACTER SET UTF8" );
 }
-
-
 function register ()
 {
     global $link;
@@ -63,7 +60,6 @@ function register ()
     }
     include_once ( "vaated/register.php" );
 }
-
 function login ()
 {
     global $link;
@@ -86,14 +82,12 @@ function login ()
     }
     include_once ( "vaated/login.php" );
 }
-
 function logout ()
 {
     $_SESSION = array ();
     session_destroy ();
     header ( "Location: ?" );
 }
-
 function rulett ()
 {
     global $link;
@@ -102,9 +96,6 @@ function rulett ()
     $rand = mysqli_fetch_assoc ( $result );
     include_once ( "rulett.php" );
 }
-
-
-
 function kuva_joogid ()
 {
     global $link;
@@ -116,7 +107,6 @@ function kuva_joogid ()
     }
     include_once ( "vaated/joogid.php" );
 }
-
 function kuva_jook ()
 {
     global $link;
@@ -153,42 +143,37 @@ function lisa ()
                 echo "<script type='text/javascript'>alert('$message');
                 window.location.replace('$suuna');</script>";
             }
-                $errors = array ();
+            $errors = array ();
             if ( !empty( $_POST ) ) {
                 if ( empty( $_POST[ "name" ] )  ) {
-                        $errors[] = "Kokteili nimi kohustuslik";
-                    }
-                    if ( empty( $_POST[ "ingredient1" ] ) ) {
-                        $errors[] = "Esimene koostisosa kohustuslik";
-                    }
-                    if ( empty( $_POST[ "ingredient2" ] )  ) {
-                        $errors[] = "Teine koostisosa kohustuslik";
-                    }
-                    if ( empty( $_POST[ "recipe" ] ) ) {
-                        $errors[] = "Valmistamine kohustuslik";
-                    }
-                    if ( empty( $errors ) ) {
-                        $name = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "name" ] ));
-                        $ingredient1 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient1" ] ));
-                        $ingredient2 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient2" ] ));
-                        $ingredient3 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient3" ] ));
-                        $ingredient4 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient4" ] ));
-                        $ingredient5 = escapeHtml( mysqli_real_escape_string ( $link, $_POST[ "ingredient5" ] ));
-                        $recipe = escapeHtml( mysqli_real_escape_string ( $link, $_POST[ "recipe" ] ));
-
-                        $sql = "INSERT INTO A4_drinks (name, ingredient1, ingredient2, ingredient3, ingredient4,ingredient5, recipe) VALUES
+                    $errors[] = "Kokteili nimi kohustuslik";
+                }
+                if ( empty( $_POST[ "ingredient1" ] ) ) {
+                    $errors[] = "Esimene koostisosa kohustuslik";
+                }
+                if ( empty( $_POST[ "ingredient2" ] )  ) {
+                    $errors[] = "Teine koostisosa kohustuslik";
+                }
+                if ( empty( $_POST[ "recipe" ] ) ) {
+                    $errors[] = "Valmistamine kohustuslik";
+                }
+                if ( empty( $errors ) ) {
+                    $name = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "name" ] ));
+                    $ingredient1 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient1" ] ));
+                    $ingredient2 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient2" ] ));
+                    $ingredient3 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient3" ] ));
+                    $ingredient4 = escapeHtml(mysqli_real_escape_string ( $link, $_POST[ "ingredient4" ] ));
+                    $ingredient5 = escapeHtml( mysqli_real_escape_string ( $link, $_POST[ "ingredient5" ] ));
+                    $recipe = escapeHtml( mysqli_real_escape_string ( $link, $_POST[ "recipe" ] ));
+                    $sql = "INSERT INTO A4_drinks (name, ingredient1, ingredient2, ingredient3, ingredient4,ingredient5, recipe) VALUES
  ('$name','$ingredient1', '$ingredient2','$ingredient3', '$ingredient4', '$ingredient5' , '$recipe')";
-                        $result = mysqli_query ( $link, $sql );
-                        if ( $result ) {
-                            header ( "Location: ?mode=joogid" );
-                        }
+                    $result = mysqli_query ( $link, $sql );
+                    if ( $result ) {
+                        header ( "Location: ?mode=joogid" );
                     }
                 }
             }
-
-
+        }
         include_once ( "vaated/lisa.php" );
     }
 }
-
-
